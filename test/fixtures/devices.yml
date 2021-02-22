@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  factory_code: MyString
+  category: MyString
+
+two:
+  code: MyString
+  factory_code: MyString
+  category: MyString
