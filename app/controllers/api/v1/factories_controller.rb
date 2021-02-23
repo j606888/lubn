@@ -12,22 +12,15 @@ class Api::V1::FactoriesController < Api::ApplicationController
   def update
     factory = Factory.find_by(code: params[:id])
 
-    if factory.nil?
-      return render status: 404, json: { "error": "Factory(#{params[:id]}) not found!"}
-    else
-      factory.update(update_params)
-      return render status: 200, json: { data: factory.info }
-    end
+    return render status: 404, json: { "error": "Factory(#{params[:id]}) not found!"} if factory.nil?
+    render status: 200, json: { data: factory.info }
   end
 
   def devices
     factory = Factory.find_by(code: params[:factory_id])
 
-    if factory.nil?
-      return render status: 404, json: { "error": "Factory(#{params[:factory_id]}) not found!"}
-    else
-      return render status: 200, json: { data: factory.devices.map(&:info) }
-    end
+    return render status: 404, json: { "error": "Factory(#{params[:factory_id]}) not found!"} if factory.nil?
+    render status: 200, json: { data: factory.devices.map(&:info) }
   end
 
   private
